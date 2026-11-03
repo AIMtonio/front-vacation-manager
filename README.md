@@ -14,18 +14,14 @@ Abrir http://localhost:3000
 - **/** – Calendario mensual dinámico; cada arquitecto tiene su color. Clic en un evento para ver fechas y backups; clic en un nombre de la leyenda para ocultarlo/mostrarlo.
 - **/vacaciones** – Formulario para asignar vacaciones (arquitecto, rango de fechas, backups, notas) y listado con opción de eliminar.
 
-## Datos
+## Base de datos local
 
-- **Arquitectos**: `data/architects.json` (`id`, `name`, `color` opcional). Edítalo en el repo para agregar o renombrar arquitectos; no cambies el `id` de uno que ya tenga vacaciones.
-- **Vacaciones**:
-  - Con `DATABASE_URL` (o `POSTGRES_URL`) definida → Postgres (Neon). La tabla `vacations` se crea sola en la primera petición.
-  - Sin ella → `data/vacations.json` (solo desarrollo local; en Vercel el disco es de solo lectura).
+Los datos viven en archivos JSON dentro de `data/`:
 
-### Configurar Postgres en Vercel
-
-1. En el proyecto de Vercel: **Storage → Create Database → Neon (Postgres)** y conéctala al proyecto. Esto agrega `DATABASE_URL` a las variables de entorno.
-2. Haz un redeploy.
-3. (Opcional) Para usar la misma base en local, copia `.env.example` a `.env.local` y pega la cadena de conexión.
+| Archivo | Contenido |
+|---|---|
+| `data/architects.json` | Catálogo de arquitectos (`id`, `name`, `color` opcional). Edítalo para agregar o renombrar arquitectos. |
+| `data/vacations.json` | Vacaciones registradas (lo escribe la aplicación). |
 
 ## Reglas de validación (servidor)
 
